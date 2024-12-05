@@ -33,9 +33,9 @@ public class ServiceStorage {
 
     public List<Advert> findAdvert(String brand, String color, BigDecimal price) {
         return data.values().stream()
-                .filter(advert -> ((advert.getBrand() == null) || advert.getBrand().equalsIgnoreCase(brand))
-                        && ((advert.getColor() == null) || advert.getColor().equalsIgnoreCase(color))
-                        && ((advert.getPrice() == null) || advert.getPrice().equals(price)))
+                .filter(advert -> ((brand == null) || advert.getBrand().equalsIgnoreCase(brand))
+                        && ((color == null) || advert.getColor().equalsIgnoreCase(color))
+                        && ((price == null) || advert.getPrice().equals(price)))
                 .toList();
     }
 
