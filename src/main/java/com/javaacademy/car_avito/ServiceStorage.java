@@ -2,6 +2,7 @@ package com.javaacademy.car_avito;
 
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,5 +30,13 @@ public class ServiceStorage {
     public boolean deleteById(Integer id) {
         return data.remove(id) != null;
     }
-    
+
+    public List<Advert> findAdvert(String brand, String color, BigDecimal price) {
+        return data.values().stream()
+                .filter(advert -> ((advert.getBrand() == null) || advert.getBrand().equalsIgnoreCase(brand))
+                        && ((advert.getColor() == null) || advert.getColor().equalsIgnoreCase(color))
+                        && ((advert.getPrice() == null) || advert.getPrice().equals(price)))
+                .toList();
+    }
+
 }
